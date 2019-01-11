@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomConfigurationManager", "CustomConfigurationManager\CustomConfigurationManager.csproj", "{E2FC851D-A44C-4D30-8879-3374EAD114EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomConfigurationManager.Tests", "CustomConfigurationManager.Tests\CustomConfigurationManager.Tests.csproj", "{6DC62458-B25C-4259-BCB4-56C76CF4D27E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2FC851D-A44C-4D30-8879-3374EAD114EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2FC851D-A44C-4D30-8879-3374EAD114EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2FC851D-A44C-4D30-8879-3374EAD114EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2FC851D-A44C-4D30-8879-3374EAD114EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC62458-B25C-4259-BCB4-56C76CF4D27E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC62458-B25C-4259-BCB4-56C76CF4D27E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC62458-B25C-4259-BCB4-56C76CF4D27E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC62458-B25C-4259-BCB4-56C76CF4D27E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29E662D9-5824-4A05-8383-CDFC03BF6CD0}
+	EndGlobalSection
+EndGlobal
