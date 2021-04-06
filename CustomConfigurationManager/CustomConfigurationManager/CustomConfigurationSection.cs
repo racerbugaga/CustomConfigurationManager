@@ -9,9 +9,9 @@ namespace CustomConfigurationManager
     {
         public readonly Dictionary<string, XDocument> ConfigContainer = new Dictionary<string, XDocument>();
 
-        public static CustomConfigurationSection GetConfiguration()
+        public static CustomConfigurationSection GetConfiguration(string configName)
         {
-            return (CustomConfigurationSection) ConfigurationManager.GetSection("CustomConfiguration");
+            return (CustomConfigurationSection) ConfigurationManager.GetSection(configName);
         }
 
         protected override bool OnDeserializeUnrecognizedElement(string name, XmlReader reader)

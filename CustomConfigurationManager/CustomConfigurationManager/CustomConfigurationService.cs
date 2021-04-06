@@ -10,8 +10,21 @@ namespace CustomConfigurationManager
 {
     public class CustomConfigurationService
     {
-        private readonly Lazy<Dictionary<string, XDocument>> _configContainer = new Lazy<Dictionary<string, XDocument>>(InitContainer);
+        public const string DefaultSectionName = "CustomConfiguration";
+
+        private readonly string _configurationName;
+        private readonly Lazy<Dictionary<string, XDocument>> _configContainer;
         private readonly ConcurrentDictionary<string, object> _configs = new ConcurrentDictionary<string, object>();
+
+        public CustomConfigurationService() : this(DefaultSectionName)
+        {
+        }
+
+        public CustomConfigurationService(string configurationName)
+        {
+            _configurationName = configurationName;
+            _configContainer = new Lazy<Dictionary<string, XDocument>>(InitContainer);
+        }
 
         public T GetConfig<T>()
         {
@@ -29,9 +42,9 @@ namespace CustomConfigurationManager
             }
         }
 
-        private static Dictionary<string, XDocument> InitContainer()
+        private Dictionary<string, XDocument> InitContainer()
         {
-            return CustomConfigurationSection.GetConfiguration().ConfigContainer;
+            return CustomConfigurationSection.GetConfiguration(_configurationName).ConfigContainer;
         }
     }
 }
