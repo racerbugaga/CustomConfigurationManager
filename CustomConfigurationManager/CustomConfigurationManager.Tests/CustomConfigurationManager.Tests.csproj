@@ -50,6 +50,7 @@
     <Compile Include="TestConfigs\RootedSection.cs" />
     <Compile Include="TestConfigs\Server.cs" />
     <Compile Include="TestConfigs\ServersSection.cs" />
+    <Compile Include="Xml\XmlConfigurationServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoFixture">
