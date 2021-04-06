@@ -44,8 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomConfigurationSectionTests.cs" />
-    <Compile Include="CustomConfigurationServiceTests.cs" />
+    <Compile Include="AppConfig\AppConfigurationSectionTests.cs" />
+    <Compile Include="AppConfig\AppConfigurationServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConfigs\RootedSection.cs" />
     <Compile Include="TestConfigs\Server.cs" />

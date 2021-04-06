@@ -6,13 +6,14 @@ using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using CustomConfigurationManager.AppConfig;
 
 namespace CustomConfigurationManager
 {
     /// <summary>
     /// Сервис получения объекта конфигурации из app.config
     /// </summary>
-    public class CustomConfigurationService
+    public class AppConfigurationService : IConfigurationService
     {
         private const string DefaultSectionName = "CustomConfiguration";
 
@@ -23,7 +24,7 @@ namespace CustomConfigurationManager
         /// <summary>
         /// Конструктор с дефолтными параметрами
         /// </summary>
-        public CustomConfigurationService() : this(DefaultSectionName)
+        public AppConfigurationService() : this(DefaultSectionName)
         {
         }
 
@@ -31,7 +32,7 @@ namespace CustomConfigurationManager
         /// Конструктор
         /// </summary>
         /// <param name="configurationName">Имя секции конфигурации</param>
-        public CustomConfigurationService(string configurationName)
+        public AppConfigurationService(string configurationName)
         {
             _configurationName = configurationName?? throw new ArgumentNullException(nameof(configurationName));
             _configContainer = new Lazy<Dictionary<string, XDocument>>(InitContainer);
@@ -65,7 +66,7 @@ namespace CustomConfigurationManager
 
         private Dictionary<string, XDocument> InitContainer()
         {
-            return CustomConfigurationSection.GetConfiguration(_configurationName).ConfigContainer;
+            return AppConfigurationSection.GetConfiguration(_configurationName).ConfigContainer;
         }
     }
 }

@@ -4,12 +4,12 @@ using System.Configuration;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace CustomConfigurationManager
+namespace CustomConfigurationManager.AppConfig
 {
     /// <summary>
     /// Секция кастомной конфигурации
     /// </summary>
-    internal class CustomConfigurationSection : ConfigurationSection
+    internal class AppConfigurationSection : ConfigurationSection
     {
         public readonly Dictionary<string, XDocument> ConfigContainer = new Dictionary<string, XDocument>();
 
@@ -18,12 +18,12 @@ namespace CustomConfigurationManager
         /// </summary>
         /// <param name="configName">Имя секции конфигурации</param>
         /// <returns>Секция</returns>
-        public static CustomConfigurationSection GetConfiguration(string configName)
+        public static AppConfigurationSection GetConfiguration(string configName)
         {
             if (String.IsNullOrEmpty(configName))
                 throw new ArgumentNullException(nameof(configName));
-            
-            return (CustomConfigurationSection) ConfigurationManager.GetSection(configName);
+
+            return (AppConfigurationSection) ConfigurationManager.GetSection(configName);
         }
 
         protected override bool OnDeserializeUnrecognizedElement(string name, XmlReader reader)

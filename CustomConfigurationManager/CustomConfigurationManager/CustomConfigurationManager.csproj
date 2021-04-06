@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomConfigurationSection.cs" />
-    <Compile Include="CustomConfigurationService.cs" />
+    <Compile Include="AppConfig\AppConfigurationService.cs" />
+    <Compile Include="AppConfig\AppConfigurationSection.cs" />
+    <Compile Include="IConfigurationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
