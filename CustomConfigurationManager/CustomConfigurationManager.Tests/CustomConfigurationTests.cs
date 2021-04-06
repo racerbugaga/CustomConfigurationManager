@@ -1,12 +1,11 @@
 ﻿using CustomConfigurationManager.Tests.TestConfigs;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CustomConfigurationManager.Tests
 {
-    [TestClass]
     public class CustomConfigurationTests
     {
-        [TestMethod]
+        [Fact]
         public void CustomConfigurationService_GetConfig_Success()
         {
             //arrange
@@ -16,8 +15,8 @@ namespace CustomConfigurationManager.Tests
             var config = target.GetConfig<ServersSection>();
 
             //assert
-            Assert.AreEqual(3, config.Parallelism);
-            Assert.IsTrue(config.ParallelEnabled);
+            Assert.Equal(3, config.Parallelism);
+            Assert.True(config.ParallelEnabled);
         }
     }
 }
