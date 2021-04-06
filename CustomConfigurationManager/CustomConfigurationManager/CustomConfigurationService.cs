@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -17,7 +18,7 @@ namespace CustomConfigurationManager
 
         private readonly string _configurationName;
         private readonly Lazy<Dictionary<string, XDocument>> _configContainer;
-        private readonly ConcurrentDictionary<string, object> _configs = new ConcurrentDictionary<string, object>();
+        private readonly ConcurrentDictionary<Type, object> _configs = new ConcurrentDictionary<Type, object>();
 
         /// <summary>
         /// Конструктор с дефолтными параметрами
@@ -43,8 +44,13 @@ namespace CustomConfigurationManager
         /// <returns>Экземпляр конфигурации</returns>
         public T GetConfig<T>()
         {
-            return (T) _configs.GetOrAdd(typeof(T).Name,
-                (name) => DeserializeConfiguration<T>(_configContainer.Value[name], name));
+            return (T) _configs.GetOrAdd(typeof(T),
+                (type) =>
+                {
+                    var rootAttribute = type.GetCustomAttributes().OfType<XmlRootAttribute>().SingleOrDefault();
+                    var name = rootAttribute?.ElementName ?? type.Name;
+                    return DeserializeConfiguration<T>(_configContainer.Value[name], name);
+                });
         }
 
         private static T DeserializeConfiguration<T>(XContainer doc, string name)

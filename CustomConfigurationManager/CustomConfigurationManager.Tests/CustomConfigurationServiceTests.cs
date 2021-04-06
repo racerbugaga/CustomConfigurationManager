@@ -36,6 +36,20 @@ namespace CustomConfigurationManager.Tests
             Assert.True(config.ParallelEnabled);
         }
 
+        [Fact]
+        public void CustomConfigurationService_GetConfigRoot_Success()
+        {
+            //arrange
+            var target = new CustomConfigurationService();
+
+            //act
+            var config = target.GetConfig<RootedSection>();
+
+            //assert
+            Assert.Equal(1, config.Param1);
+            Assert.Equal("Param22", config.Param2);
+        }
+
         [Theory, AutoData]
         public void Guard_Success(GuardClauseAssertion assertion)
         {
