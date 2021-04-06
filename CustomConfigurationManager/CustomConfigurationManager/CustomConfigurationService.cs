@@ -32,7 +32,7 @@ namespace CustomConfigurationManager
         /// <param name="configurationName">Имя секции конфигурации</param>
         public CustomConfigurationService(string configurationName)
         {
-            _configurationName = configurationName;
+            _configurationName = configurationName?? throw new ArgumentNullException(nameof(configurationName));
             _configContainer = new Lazy<Dictionary<string, XDocument>>(InitContainer);
         }
 

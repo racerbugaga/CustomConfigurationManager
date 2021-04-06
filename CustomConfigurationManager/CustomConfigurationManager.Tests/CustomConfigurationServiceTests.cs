@@ -1,9 +1,12 @@
-﻿using CustomConfigurationManager.Tests.TestConfigs;
+﻿using AutoFixture;
+using AutoFixture.Idioms;
+using AutoFixture.Xunit2;
+using CustomConfigurationManager.Tests.TestConfigs;
 using Xunit;
 
 namespace CustomConfigurationManager.Tests
 {
-    public class CustomConfigurationTests
+    public class CustomConfigurationServiceTests
     {
         [Fact]
         public void CustomConfigurationService_GetConfig_Success()
@@ -31,6 +34,12 @@ namespace CustomConfigurationManager.Tests
             //assert
             Assert.Equal(3, config.Parallelism);
             Assert.True(config.ParallelEnabled);
+        }
+
+        [Theory, AutoData]
+        public void Guard_Success(GuardClauseAssertion assertion)
+        {
+            assertion.Verify(typeof(CustomConfigurationService));
         }
     }
 }

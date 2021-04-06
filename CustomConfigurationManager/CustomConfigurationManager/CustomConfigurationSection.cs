@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Xml;
 using System.Xml.Linq;
@@ -19,6 +20,9 @@ namespace CustomConfigurationManager
         /// <returns>Секция</returns>
         public static CustomConfigurationSection GetConfiguration(string configName)
         {
+            if (String.IsNullOrEmpty(configName))
+                throw new ArgumentNullException(nameof(configName));
+            
             return (CustomConfigurationSection) ConfigurationManager.GetSection(configName);
         }
 
