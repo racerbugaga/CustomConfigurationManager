@@ -6,9 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using CustomConfigurationManager.AppConfig;
 
-namespace CustomConfigurationManager
+namespace CustomConfigurationManager.AppConfig
 {
     /// <summary>
     /// Сервис получения объекта конфигурации из app.config

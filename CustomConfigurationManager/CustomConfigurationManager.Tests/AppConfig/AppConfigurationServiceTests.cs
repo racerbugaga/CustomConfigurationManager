@@ -1,5 +1,6 @@
 ﻿using AutoFixture.Idioms;
 using AutoFixture.Xunit2;
+using CustomConfigurationManager.AppConfig;
 using CustomConfigurationManager.Tests.TestConfigs;
 using Xunit;
 
