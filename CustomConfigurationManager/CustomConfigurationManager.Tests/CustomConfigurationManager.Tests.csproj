@@ -48,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConfigs\Server.cs" />
     <Compile Include="TestConfigs\ServersSection.cs" />
+    <Compile Include="TestConfigs\TestConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="xunit">

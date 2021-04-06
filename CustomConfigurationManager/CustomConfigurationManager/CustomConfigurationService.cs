@@ -8,24 +8,39 @@ using System.Xml.Serialization;
 
 namespace CustomConfigurationManager
 {
+    /// <summary>
+    /// Сервис получения объекта конфигурации из app.config
+    /// </summary>
     public class CustomConfigurationService
     {
-        public const string DefaultSectionName = "CustomConfiguration";
+        private const string DefaultSectionName = "CustomConfiguration";
 
         private readonly string _configurationName;
         private readonly Lazy<Dictionary<string, XDocument>> _configContainer;
         private readonly ConcurrentDictionary<string, object> _configs = new ConcurrentDictionary<string, object>();
 
+        /// <summary>
+        /// Конструктор с дефолтными параметрами
+        /// </summary>
         public CustomConfigurationService() : this(DefaultSectionName)
         {
         }
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="configurationName">Имя секции конфигурации</param>
         public CustomConfigurationService(string configurationName)
         {
             _configurationName = configurationName;
             _configContainer = new Lazy<Dictionary<string, XDocument>>(InitContainer);
         }
 
+        /// <summary>
+        /// Получить модель конфигурации по имени класса
+        /// </summary>
+        /// <typeparam name="T">Тип конфигурации</typeparam>
+        /// <returns>Экземпляр конфигурации</returns>
         public T GetConfig<T>()
         {
             return (T) _configs.GetOrAdd(typeof(T).Name,
