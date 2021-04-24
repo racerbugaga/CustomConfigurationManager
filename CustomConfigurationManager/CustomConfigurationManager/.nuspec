@@ -3,9 +3,10 @@
   <metadata>
     <!-- Required elements-->
     <id>CustomConfigurationManager</id>
-    <version>1.0.0-alpha4</version>
+    <version>1.0.0-alpha5</version>
     <description>CustomConfigurationManager</description>
     <authors>Alexander Shilov</authors>
+    <projectUrl>https://github.com/racerbugaga/CustomConfigurationManager</projectUrl>
   </metadata>
 
   <files>
