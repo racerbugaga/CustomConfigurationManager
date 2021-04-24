@@ -11,7 +11,7 @@ namespace CustomConfigurationManager.AppConfig
     /// </summary>
     internal class AppConfigurationSection : ConfigurationSection
     {
-        public readonly Dictionary<string, XDocument> ConfigContainer = new Dictionary<string, XDocument>();
+        public readonly Dictionary<string, string> ConfigContainer = new Dictionary<string, string>();
 
         /// <summary>
         /// Получить секцию конфигурации
@@ -28,7 +28,7 @@ namespace CustomConfigurationManager.AppConfig
 
         protected override bool OnDeserializeUnrecognizedElement(string name, XmlReader reader)
         {
-            ConfigContainer.Add(reader.Name, XDocument.Load(reader.ReadSubtree()));
+            ConfigContainer.Add(reader.Name, XDocument.Load(reader.ReadSubtree()).ToString());
             return true;
         }
     }

@@ -1,24 +1,20 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Xml.Linq;
 using System.Xml.Serialization;
+using CustomConfigurationManager.Xml;
 
 namespace CustomConfigurationManager.AppConfig
 {
     /// <summary>
     /// Сервис получения объекта конфигурации из app.config
     /// </summary>
-    public class AppConfigurationService : IConfigurationService
+    public class AppConfigurationService : XmlConfigurationService
     {
         private const string DefaultSectionName = "CustomConfiguration";
-
         private readonly string _configurationName;
-        private readonly Lazy<Dictionary<string, XDocument>> _configContainer;
-        private readonly ConcurrentDictionary<Type, object> _configs = new ConcurrentDictionary<Type, object>();
 
         /// <summary>
         /// Конструктор с дефолтными параметрами
@@ -31,39 +27,12 @@ namespace CustomConfigurationManager.AppConfig
         /// Конструктор
         /// </summary>
         /// <param name="configurationName">Имя секции конфигурации</param>
-        public AppConfigurationService(string configurationName)
+        public AppConfigurationService(string configurationName) : base(configurationName)
         {
-            _configurationName = configurationName?? throw new ArgumentNullException(nameof(configurationName));
-            _configContainer = new Lazy<Dictionary<string, XDocument>>(InitContainer);
+            _configurationName = configurationName;
         }
 
-        /// <summary>
-        /// Получить модель конфигурации по имени класса
-        /// </summary>
-        /// <typeparam name="T">Тип конфигурации</typeparam>
-        /// <returns>Экземпляр конфигурации</returns>
-        public T GetConfig<T>()
-        {
-            return (T) _configs.GetOrAdd(typeof(T),
-                (type) =>
-                {
-                    var rootAttribute = type.GetCustomAttributes().OfType<XmlRootAttribute>().SingleOrDefault();
-                    var name = rootAttribute?.ElementName ?? type.Name;
-                    return DeserializeConfiguration<T>(_configContainer.Value[name], name);
-                });
-        }
-
-        private static T DeserializeConfiguration<T>(XContainer doc, string name)
-        {
-            var query = doc.Descendants(name).Single().ToString();
-            var formatter = new XmlSerializer(typeof(T));
-            using (var reader = new StringReader(query))
-            {
-                return (T)formatter.Deserialize(reader);
-            }
-        }
-
-        private Dictionary<string, XDocument> InitContainer()
+        protected override Dictionary<string, string> InitContainer(string _)
         {
             return AppConfigurationSection.GetConfiguration(_configurationName).ConfigContainer;
         }
