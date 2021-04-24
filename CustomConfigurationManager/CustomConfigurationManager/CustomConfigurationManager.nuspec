@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <!-- Required elements-->
+    <id>CustomConfigurationManager</id>
+    <version>1.0.0-alpha1</version>
+    <description>CustomConfigurationManager</description>
+    <authors>Alexander Shilov</authors>
+    <projectUrl>https://github.com/racerbugaga/CustomConfigurationManager</projectUrl>
+  </metadata>
+
+  <files>
+    <file src="bin\Release\CustomConfigurationManager.dll" target="lib\net452\CustomConfigurationManager.dll" />
+  </files>
+</package>
