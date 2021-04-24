@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AppConfig\AppConfigurationService.cs" />
     <Compile Include="AppConfig\AppConfigurationSection.cs" />
+    <Compile Include="Exceptions\CustomConfigurationException.cs" />
     <Compile Include="IConfigurationSerializer.cs" />
     <Compile Include="IConfigurationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
