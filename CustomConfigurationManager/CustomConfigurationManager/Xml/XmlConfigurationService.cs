@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using CustomConfigurationManager.Exceptions;
 using CustomConfigurationManager.Serializers;
 
 namespace CustomConfigurationManager.Xml
@@ -31,7 +32,10 @@ namespace CustomConfigurationManager.Xml
                 {
                     var rootAttribute = type.GetCustomAttributes().OfType<XmlRootAttribute>().SingleOrDefault();
                     var name = rootAttribute?.ElementName ?? type.Name;
-                    return _configurationSerializer.Deserialize<T>(_configContainer.Value[name]);
+                    if(_configContainer.Value.TryGetValue(name, out var result))
+                        return _configurationSerializer.Deserialize<T>(_configContainer.Value[name]);
+
+                    throw new CustomConfigurationException($"Не найдено XML представление для типа {name}");
                 });
         }
 

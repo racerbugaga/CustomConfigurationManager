@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
+using CustomConfigurationManager.Exceptions;
 using CustomConfigurationManager.Xml;
 
 namespace CustomConfigurationManager.AppConfig
@@ -34,7 +35,9 @@ namespace CustomConfigurationManager.AppConfig
 
         protected override Dictionary<string, string> InitContainer(string _)
         {
-            return AppConfigurationSection.GetConfiguration(_configurationName).ConfigContainer;
+            var section = AppConfigurationSection.GetConfiguration(_configurationName)
+                          ?? throw new CustomConfigurationException($"Не найдена секция {_configurationName}");
+            return section.ConfigContainer;
         }
     }
 }
