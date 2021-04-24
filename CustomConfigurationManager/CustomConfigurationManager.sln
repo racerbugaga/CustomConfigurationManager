@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomConfigurationManager", "CustomConfigurationManager\CustomConfigurationManager.csproj", "{E2FC851D-A44C-4D30-8879-3374EAD114EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomConfigurationManager.Tests", "CustomConfigurationManager.Tests\CustomConfigurationManager.Tests.csproj", "{6DC62458-B25C-4259-BCB4-56C76CF4D27E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomConfigurationManager.Autofac", "CustomConfigurationManager.Autofac\CustomConfigurationManager.Autofac.csproj", "{F97DB677-6C52-4342-A8C9-DEB03FE74B86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6DC62458-B25C-4259-BCB4-56C76CF4D27E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DC62458-B25C-4259-BCB4-56C76CF4D27E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DC62458-B25C-4259-BCB4-56C76CF4D27E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F97DB677-6C52-4342-A8C9-DEB03FE74B86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97DB677-6C52-4342-A8C9-DEB03FE74B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97DB677-6C52-4342-A8C9-DEB03FE74B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97DB677-6C52-4342-A8C9-DEB03FE74B86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

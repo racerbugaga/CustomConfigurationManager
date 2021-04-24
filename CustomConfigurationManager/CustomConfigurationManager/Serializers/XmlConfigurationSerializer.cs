@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace CustomConfigurationManager.Serializers
 {
-    class XmlConfigurationSerializer : IConfigurationSerializer
+    internal class XmlConfigurationSerializer : IConfigurationSerializer
     {
         public T Deserialize<T>(string data)
         {
