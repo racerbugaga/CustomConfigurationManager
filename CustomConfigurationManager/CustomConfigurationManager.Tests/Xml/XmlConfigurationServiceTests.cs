@@ -1,4 +1,5 @@
-﻿using AutoFixture.Idioms;
+﻿using System;
+using AutoFixture.Idioms;
 using AutoFixture.Xunit2;
 using CustomConfigurationManager.Tests.TestConfigs;
 using CustomConfigurationManager.Xml;
@@ -12,7 +13,7 @@ namespace CustomConfigurationManager.Tests.Xml
         public void XmlConfigurationService_GetConfig_Success()
         {
             // arrange
-            var target = new XmlConfigurationService();
+            var target = new XmlConfigurationService("Xml\\Config.Config");
 
             // act
             var config = target.GetConfig<ServersSection>();

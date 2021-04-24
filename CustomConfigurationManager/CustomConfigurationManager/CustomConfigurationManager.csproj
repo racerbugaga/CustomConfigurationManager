@@ -44,8 +44,10 @@
   <ItemGroup>
     <Compile Include="AppConfig\AppConfigurationService.cs" />
     <Compile Include="AppConfig\AppConfigurationSection.cs" />
+    <Compile Include="IConfigurationSerializer.cs" />
     <Compile Include="IConfigurationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializers\XmlConfigurationSerializer.cs" />
     <Compile Include="Xml\XmlConfigurationService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
