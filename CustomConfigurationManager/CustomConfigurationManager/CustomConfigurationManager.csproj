@@ -50,5 +50,8 @@
     <Compile Include="Serializers\XmlConfigurationSerializer.cs" />
     <Compile Include="Xml\XmlConfigurationService.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="CustomConfigurationManager.nuspec" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
