@@ -4,6 +4,7 @@ namespace CustomConfigurationManager.Tests.TestConfigs
 {
     public class Server
     {
-        [XmlElement("Name")] public string Name { get; set; }
+        [XmlElement("Name")] 
+        public string Name { get; set; }
     }
 }
